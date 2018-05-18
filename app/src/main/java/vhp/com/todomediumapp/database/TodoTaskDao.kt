@@ -1,5 +1,6 @@
 package vhp.com.todomediumapp.database
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
@@ -14,7 +15,7 @@ import android.arch.persistence.room.Update
 interface TodoTaskDao {
 
     @Query("select * from todotasks order by id")
-    fun getallTasks(): List<TodoTask>
+    fun getallTasks(): LiveData<List<TodoTask>>
 
     @Insert
     fun insertTodoTask(todoTask: TodoTask)
@@ -26,5 +27,5 @@ interface TodoTaskDao {
     fun deleteTodoTask()
 
     @Query("Select * from todotasks where id = :id")
-    fun getTaskbyId(id: Int): List<TodoTask>
+    fun getTaskbyId(id: Int): LiveData<List<TodoTask>>
 }
