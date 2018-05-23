@@ -1,26 +1,17 @@
 package vhp.com.todomediumapp
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_list.*
-import vhp.com.todomediumapp.R.id.floatingActionButton_add_task
-import vhp.com.todomediumapp.R.id.recyclerview_task
 import vhp.com.todomediumapp.adapters.TodoTaskAdapters
 import vhp.com.todomediumapp.database.AppDatabase
-import vhp.com.todomediumapp.database.TodoTask
-import vhp.com.todomediumapp.executors.TodoAppExecutors
 import vhp.com.todomediumapp.viewmodels.TodoListViewModel
-import kotlin.math.log
 
 class ListActivity : AppCompatActivity() {
 

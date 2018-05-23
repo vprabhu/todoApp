@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_add_task.*
-import vhp.com.todomediumapp.R.id.button_add_task
 import vhp.com.todomediumapp.database.AppDatabase
 import vhp.com.todomediumapp.database.TodoTask
 import vhp.com.todomediumapp.executors.TodoAppExecutors

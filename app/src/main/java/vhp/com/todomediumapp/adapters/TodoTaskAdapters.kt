@@ -1,8 +1,6 @@
 package vhp.com.todomediumapp.adapters
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +23,6 @@ class TodoTaskAdapters(var mTodoTaskList : List<TodoTask>)
 
     override fun onBindViewHolder(holder: TodaTaskViewHolder, position: Int) {
         holder.mTaskTextView.text = mTodoTaskList.get(position).taskName
-        Log.d("List" , "ITEM : "+mTodoTaskList.get(position).taskName)
     }
 
     class TodaTaskViewHolder(view : View ) : RecyclerView.ViewHolder(view){
