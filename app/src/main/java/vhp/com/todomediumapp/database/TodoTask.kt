@@ -9,7 +9,21 @@ import java.util.Date
 /**
  * Created by Vignesh Prabhu on 18/5/18.
  */
-@Entity(tableName = "todotasks")
+/*@Entity(tableName = "todotasks")
 class TodoTask(@field:PrimaryKey(autoGenerate = true)
-               var id: Int, var name: String?, @field:ColumnInfo(name = "due_date")
-               var dueDate: Date?)
+               var id: Int = 0, var name: String? = null, @field:ColumnInfo(name = "updated_date")
+
+               var updatedDate: Date? = null)*/
+@Entity(tableName = "todotasks")
+class TodoTask{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+    var taskName: String? = null
+    @ColumnInfo(name = "updated_date")
+    var date: Date? = null
+
+    constructor(taskName: String, date: Date) {
+        this.taskName = taskName
+        this.date = date
+    }
+}

@@ -7,15 +7,17 @@ import java.util.Date
 /**
  * Created by Vignesh Prabhu on 18/5/18.
  */
-object DataConverter {
+class DataConverter {
 
-    @TypeConverter
-    fun toDate(timestamp: Long?): Date? {
-        return if (timestamp == null) null else Date(timestamp)
-    }
+    companion object {
+        @TypeConverter
+        fun toDate(timestamp: Long?): Date? {
+            return if (timestamp == null) null else Date(timestamp)
+        }
 
-    @TypeConverter
-    fun toTimestamp(date: Date?): Long? {
-        return date?.time
+        @TypeConverter
+        fun toTimestamp(date: Date?): Long? {
+            return date?.time
+        }
     }
 }

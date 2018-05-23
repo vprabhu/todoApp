@@ -24,7 +24,7 @@ interface TodoTaskDao {
     fun updateTodoTask(todoTask: TodoTask)
 
     @Delete
-    fun deleteTodoTask()
+    fun deleteTodoTask(todoTask: TodoTask)
 
     @Query("Select * from todotasks where id = :id")
     fun getTaskbyId(id: Int): LiveData<List<TodoTask>>

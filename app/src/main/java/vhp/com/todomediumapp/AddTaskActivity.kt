@@ -4,6 +4,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_add_task.*
+import vhp.com.todomediumapp.R.id.button_add_task
+import vhp.com.todomediumapp.database.AppDatabase
+import vhp.com.todomediumapp.database.TodoTask
+import vhp.com.todomediumapp.executors.TodoAppExecutors
+import java.util.*
 
 class AddTaskActivity : AppCompatActivity() {
 
@@ -12,8 +17,17 @@ class AddTaskActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_task)
 
         val mTaskEditText : EditText = findViewById(R.id.editText_task_name)
+
         button_add_task.setOnClickListener(){
-            mTaskEditText.setText("Sample")
+            val taskName = mTaskEditText.text.toString()
+            val date = Date()
+            val todoTask = TodoTask(taskName , date)
+            TodoAppExecutors.getInstance().getDiskIO()!!.execute{
+                AppDatabase.getInstance(this.applicationContext)!!.todoTaskDao().insertTodoTask(todoTask)
+                finish()
+            }
         }
+
+
     }
 }

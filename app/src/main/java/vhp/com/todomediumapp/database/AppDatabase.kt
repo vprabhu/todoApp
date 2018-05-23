@@ -10,7 +10,7 @@ import android.content.Context
  * Created by Vignesh Prabhu on 18/5/18.
  */
 @Database(entities = arrayOf(TodoTask::class), version = 1, exportSchema = false)
-@TypeConverters(DataConverter::class)
+@TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun todoTaskDao(): TodoTaskDao
