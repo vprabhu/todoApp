@@ -10,10 +10,9 @@ import android.widget.TextView
 import vhp.com.todomediumapp.R
 import vhp.com.todomediumapp.database.TodoTask
 
-class TodoTaskAdapters(private val context : Context , var mTodoTaskList : List<TodoTask>)
+class TodoTaskAdapters(var mTodoTaskList : List<TodoTask>)
     : RecyclerView.Adapter<TodoTaskAdapters.TodaTaskViewHolder>() {
 
-//    var mTodoTaskList : List<TodoTask> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodaTaskViewHolder {
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item , parent , false)

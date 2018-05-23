@@ -23,7 +23,9 @@ class AddTaskActivity : AppCompatActivity() {
             val date = Date()
             val todoTask = TodoTask(taskName , date)
             TodoAppExecutors.getInstance().getDiskIO()!!.execute{
+                // inser the task into DB
                 AppDatabase.getInstance(this.applicationContext)!!.todoTaskDao().insertTodoTask(todoTask)
+                // finsish the activity
                 finish()
             }
         }
