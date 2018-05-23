@@ -25,7 +25,7 @@ class ListActivity : AppCompatActivity() {
     lateinit var mTaskRecyclerView : RecyclerView
     lateinit var mTodoTaskAdapters: TodoTaskAdapters
     lateinit var mDatabase: AppDatabase
-    lateinit var mTodoTaskList: LiveData<List<TodoTask>>
+//    lateinit var mTodoTaskList: LiveData<List<TodoTask>>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +35,6 @@ class ListActivity : AppCompatActivity() {
         mTaskRecyclerView = findViewById(R.id.recyclerview_task)
 
         mDatabase = AppDatabase.getInstance(this.applicationContext)!!
-        mTodoTaskAdapters = TodoTaskAdapters(this)
-        mTaskRecyclerView.layoutManager = LinearLayoutManager(
-                this.applicationContext ,
-                LinearLayout.VERTICAL , false)
-        mTaskRecyclerView.adapter = TodoTaskAdapters(this)
 
         loadTodoTasks()
 
@@ -52,16 +47,17 @@ class ListActivity : AppCompatActivity() {
 
     private fun loadTodoTasks() {
         TodoAppExecutors.getInstance().getDiskIO()?.execute(){
-            mTodoTaskList = mDatabase.todoTaskDao().getallTasks()
+            var mTodoTaskList : LiveData<List<TodoTask>> = mDatabase.todoTaskDao().getallTasks()
             mTodoTaskList.observe(
                     this ,
                     Observer<List<TodoTask>>() {
                         Log.d("List" , it?.size.toString())
                         if (it != null) {
-                            for (item : TodoTask in it ){
-                                Log.d("List" , item.taskName)
-                            }
-                            mTodoTaskAdapters.setTasks(it)
+                            mTodoTaskAdapters = TodoTaskAdapters(this , it)
+                            mTaskRecyclerView.layoutManager = LinearLayoutManager(
+                                    this.applicationContext ,
+                                    LinearLayout.VERTICAL , false)
+                            mTaskRecyclerView.adapter = mTodoTaskAdapters
                         }
                     } )
         }

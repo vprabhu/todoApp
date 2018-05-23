@@ -10,10 +10,10 @@ import android.widget.TextView
 import vhp.com.todomediumapp.R
 import vhp.com.todomediumapp.database.TodoTask
 
-class TodoTaskAdapters(private val context : Context)
+class TodoTaskAdapters(private val context : Context , var mTodoTaskList : List<TodoTask>)
     : RecyclerView.Adapter<TodoTaskAdapters.TodaTaskViewHolder>() {
 
-    var mTodoTaskList : List<TodoTask> = listOf()
+//    var mTodoTaskList : List<TodoTask> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodaTaskViewHolder {
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item , parent , false)
@@ -31,12 +31,6 @@ class TodoTaskAdapters(private val context : Context)
 
     class TodaTaskViewHolder(view : View ) : RecyclerView.ViewHolder(view){
         var mTaskTextView = view.findViewById(R.id.textView_taskname) as TextView
-    }
-
-    fun setTasks(mTodoTaskListParam : List<TodoTask>){
-        mTodoTaskList = mTodoTaskListParam
-        Log.d("List" , "ITEM : "+mTodoTaskList.size)
-        notifyDataSetChanged()
     }
 
 }
